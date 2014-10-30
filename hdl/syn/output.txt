@@ -1,0 +1,11 @@
+Storage Target: BPI Flash Single FPGA
+Storage Family: Spartan6
+8M
+FF
+spi_test_bpi
+/home/aylons/projetos/spi_test/hdl/syn/
+
+MCS
+x8
+No
+
