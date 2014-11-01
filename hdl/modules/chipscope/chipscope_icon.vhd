@@ -8,7 +8,7 @@
 -- \   \   \/     Version    : 13.4
 --  \   \         Application: XILINX CORE Generator
 --  /   /         Filename   : chipscope_icon.vhd
--- /___/   /\     Timestamp  : Wed Oct 29 18:33:03 BRST 2014
+-- /___/   /\     Timestamp  : Sat Nov 01 15:30:54 BRST 2014
 -- \   \  /  \
 --  \___\/\___\
 --
@@ -20,7 +20,9 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 ENTITY chipscope_icon IS
   port (
-    CONTROL0: inout std_logic_vector(35 downto 0));
+    CONTROL0: inout std_logic_vector(35 downto 0);
+    CONTROL1: inout std_logic_vector(35 downto 0);
+    CONTROL2: inout std_logic_vector(35 downto 0));
 END chipscope_icon;
 
 ARCHITECTURE chipscope_icon_a OF chipscope_icon IS
