@@ -1,8 +1,0 @@
-INTSTYLE=ise
-INFILE=/home/aylons/projetos/spi_test/hdl/syn/spi_test_top.ncd
-OUTFILE=/home/aylons/projetos/spi_test/hdl/syn/spi_test_top.bit
-FAMILY=Spartan6
-PART=xc6slx16-2csg324
-WORKINGDIR=/home/aylons/projetos/spi_test/hdl/syn
-LICENSE=WebPack
-USER_INFO=178813297_206660106_209868106_565

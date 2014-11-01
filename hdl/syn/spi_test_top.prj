@@ -1,8 +1,0 @@
-vhdl work "../top/spi_test_top.vhd"
-vhdl work "../modules/dcm/clk_wiz_v3_3.vhd"
-vhdl work "../modules/master_controller/master_controller.vhd"
-vhdl work "../modules/simple_counter/simple_counter.vhd"
-vhdl work "../modules/slave_checker/slave_checker.vhd"
-vhdl work "../modules/spi/grp_debouncer.vhd"
-vhdl work "../modules/spi/spi_master.vhd"
-vhdl work "../modules/spi/spi_slave.vhd"
