@@ -1,8 +1,0 @@
-INTSTYLE=impact
-INFILE=/home/aylons/projetos/spi_test/hdl/syn/impact.xsl
-OUTFILE=/home/aylons/projetos/spi_test/hdl/syn/impact.xsl
-FAMILY=Single
-PART=Single
-WORKINGDIR=/home/aylons/projetos/spi_test/hdl/syn
-LICENSE=iMPACT
-USER_INFO=iMPACT

@@ -6,7 +6,7 @@
 -- Author     : aylons  <aylons@LNLS190>
 -- Company    : 
 -- Created    : 2014-10-23
--- Last update: 2014-10-30
+-- Last update: 2014-11-01
 -- Platform   : 
 -- Standard   : VHDL'93/02
 -------------------------------------------------------------------------------
@@ -66,9 +66,11 @@ architecture structural of spi_test_top is
   constant c_spi_clk_div : positive  := 3;
 
   -- service signals
-  signal clock    : std_logic;
-  signal locked   : std_logic;
-  signal locked_n : std_logic;
+  signal clock   : std_logic;
+  signal locked  : std_logic;
+  signal reset   : std_logic := '0';
+  signal reset_n : std_logic := '1';
+  signal enable  : std_logic := '1';
 
   -- master signals
   signal master_req, master_wren : std_logic;
@@ -171,6 +173,15 @@ architecture structural of spi_test_top is
       LOCKED    : out std_logic);
   end component clk_wiz_v3_3;
 
+  component reset_dcm is
+    generic (
+      cycles : positive);
+    port (
+      clk      : in  std_logic;
+      locked_i : in  std_logic;
+      reset_o  : out std_logic);
+  end component reset_dcm;
+
   component chipscope_icon is
     port (
       CONTROL0 : inout std_logic_vector(35 downto 0));
@@ -196,13 +207,21 @@ begin
       RESET     => rst_i,
       LOCKED    => locked);
 
-  locked_n <= not(locked);
+  cmp_reset_dcm : reset_dcm
+    generic map (
+      cycles => 100)
+    port map (
+      clk      => clock,
+      locked_i => locked,
+      reset_o  => reset);
+
+  reset_n <= not(reset);
 
   cmp_master_controller : master_controller
     port map (
       clk_i      => clock,
-      en_i       => on_sw_i,
-      rst_i      => locked_n,
+      en_i       => enable,
+      rst_i      => reset,
       spi_req_i  => master_req,
       spi_wen_o  => master_wren,
       count_up_o => count_up);
@@ -213,7 +232,7 @@ begin
       g_width => g_width)
     port map (
       clk_i  => clock,
-      rst_i  => locked_n,
+      rst_i  => reset,
       ce_i   => count_up,
       data_o => master_di);
 
@@ -227,7 +246,7 @@ begin
     port map (
       sclk_i     => clock,
       pclk_i     => clock,
-      rst_i      => locked_n,
+      rst_i      => reset,
       spi_ssel_o => spi_ssel_o,
       spi_sck_o  => spi_sck_o,
       spi_mosi_o => spi_mosi_o,
@@ -267,7 +286,7 @@ begin
       g_width => g_width)
     port map (
       clk_i       => clock,
-      rst_i       => locked_n,
+      rst_i       => reset,
       spi_valid_i => slave_valid,
       data_i      => slave_do,
       ok_o        => slave_ok,
@@ -278,7 +297,7 @@ begin
       g_width => g_width)
     port map (
       clk_i  => clock,
-      rst_i  => locked_n,
+      rst_i  => reset,
       ce_i   => slave_ok,
       data_o => ok_count);
 
@@ -287,7 +306,7 @@ begin
       g_width => g_width)
     port map (
       clk_i  => clock,
-      rst_i  => locked_n,
+      rst_i  => reset,
       ce_i   => slave_nok,
       data_o => nok_count);
 

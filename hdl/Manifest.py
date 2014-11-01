@@ -1,3 +1,0 @@
-modules = {
-    "local" : ["modules"]
-           }
