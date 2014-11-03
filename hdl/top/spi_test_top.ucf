@@ -15,7 +15,7 @@ NET rst_i TIG;
 
 
 NET on_sw_i LOC=V13 | IOSTANDARD = LVCMOS25;
-NET on_led_o LOC=A4 | IOSTANDARD = LVCMOS25;
+NET on_led_o LOC=C4 | IOSTANDARD = LVCMOS25;
 
 
 #### SPI - 1 ####

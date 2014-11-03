@@ -6,7 +6,7 @@
 -- Author     : aylons  <aylons@LNLS190>
 -- Company    : 
 -- Created    : 2014-10-23
--- Last update: 2014-11-01
+-- Last update: 2014-11-03
 -- Platform   : 
 -- Standard   : VHDL'93/02
 -------------------------------------------------------------------------------
@@ -105,13 +105,14 @@ architecture structural of spi_test_top is
       chipscope_control : out std_logic_vector(35 downto 0));
   end component spi_single_test;
 
+
   component clk_wiz_v3_3 is
     port (
       CLK_IN_P : in  std_logic;
       CLK_IN_N : in  std_logic;
-      CLK_200M : out std_logic;
-      CLK_80M  : out std_logic;
-      CLK_50M  : out std_logic;
+      clk_200M : out std_logic;
+      clk_80M  : out std_logic;
+      clk_50M  : out std_logic;
       reset_i  : in  std_logic;
       locked_o : out std_logic);
   end component clk_wiz_v3_3;

@@ -6,7 +6,7 @@
 -- Author     : aylons  <aylons@LNLS190>
 -- Company    : 
 -- Created    : 2014-11-01
--- Last update: 2014-11-01
+-- Last update: 2014-11-03
 -- Platform   : 
 -- Standard   : VHDL'93/02
 -------------------------------------------------------------------------------
@@ -57,7 +57,7 @@ architecture structural of spi_single_test is
   constant c_cpol        : std_logic := '0';
   constant c_cpha        : std_logic := '0';
   constant c_prefetch    : positive  := 1;
-  constant c_spi_clk_div : positive  := 3;
+  constant c_spi_clk_div : positive  := 1;
 
   -- service signals
   signal clock  : std_logic;
